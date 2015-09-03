@@ -1,0 +1,8 @@
+C:\Users\Golf\Desktop\ParkingManagement_LOTUS - Copy\Debug\dhnetsdk.dll
+C:\Users\Golf\Desktop\ParkingManagement_LOTUS - Copy\Debug\dhnetsdk.h
+C:\Users\Golf\Desktop\ParkingManagement_LOTUS - Copy\Debug\dhnetsdk.lib
+C:\Users\Golf\Desktop\ParkingManagement_LOTUS - Copy\Debug\NetSDKCS.dll
+C:\Users\Golf\Desktop\ParkingManagement_LOTUS - Copy\Debug\NetSDKCS.pdb
+C:\Users\Golf\Desktop\ParkingManagement_LOTUS - Copy\NetSDKCS\obj\Debug\NetSDKCS.csprojResolveAssemblyReference.cache
+C:\Users\Golf\Desktop\ParkingManagement_LOTUS - Copy\NetSDKCS\obj\Debug\NetSDKCS.dll
+C:\Users\Golf\Desktop\ParkingManagement_LOTUS - Copy\NetSDKCS\obj\Debug\NetSDKCS.pdb

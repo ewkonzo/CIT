@@ -1,0 +1,14 @@
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\Debug\Dispenser.exe
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\Debug\Dispenser.pdb
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\Debug\Interop.AXVLC.dll
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\Debug\AxInterop.AXVLC.dll
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\Interop.AXVLC.dll
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\AxInterop.AXVLC.dll
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\Dispenser.csproj.ResolveComReference.cache
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\Dispenser.Form1.resources
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\Dispenser.Properties.Resources.resources
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\Dispenser.csproj.GenerateResource.Cache
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\Dispenser.exe
+c:\users\dev\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\Dispenser.pdb
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\Debug\Dispenser.exe.config
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\Debug\Dispenser.csprojResolveAssemblyReference.cache

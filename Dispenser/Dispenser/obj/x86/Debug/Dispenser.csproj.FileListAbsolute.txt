@@ -1,0 +1,60 @@
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\dhnetsdk.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\dhnetsdk.h
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\dhnetsdk.lib
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Images\dark-icon.png
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Images\triangle-icon.png
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Setting.xml
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Sounds\hello.wav
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Sounds\pressGreen.wav
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Sounds\pressRed.wav
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Sounds\pullCard.wav
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Sounds\thankyou.wav
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Dispenser.exe.config
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Dispenser.exe
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Dispenser.pdb
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\DispenserControl.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\NetSDKCS.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\DispenserControl.pdb
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\NetSDKCS.pdb
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\NetSDKCS.xml
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\Interop.AXVLC.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\bin\x86\Debug\AxInterop.AXVLC.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\Dispenser.csprojResolveAssemblyReference.cache
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\Interop.AXVLC.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\AxInterop.AXVLC.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\Dispenser.csproj.ResolveComReference.cache
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\Dispenser.Form1.resources
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\Dispenser.Properties.Resources.resources
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\Dispenser.csproj.GenerateResource.Cache
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\Dispenser.exe
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\Dispenser\obj\x86\Debug\Dispenser.pdb
+C:\Dispenser\Dispenser\bin\x86\Debug\Dispenser.exe.config
+C:\Dispenser\Dispenser\obj\x86\Debug\Interop.AXVLC.dll
+C:\Dispenser\Dispenser\obj\x86\Debug\AxInterop.AXVLC.dll
+C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.csproj.ResolveComReference.cache
+C:\Dispenser\Dispenser\bin\x86\Debug\dhnetsdk.dll
+C:\Dispenser\Dispenser\bin\x86\Debug\dhnetsdk.h
+C:\Dispenser\Dispenser\bin\x86\Debug\dhnetsdk.lib
+C:\Dispenser\Dispenser\bin\x86\Debug\Images\dark-icon.png
+C:\Dispenser\Dispenser\bin\x86\Debug\Images\triangle-icon.png
+C:\Dispenser\Dispenser\bin\x86\Debug\Setting.xml
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\hello.wav
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\pressGreen.wav
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\pressRed.wav
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\pullCard.wav
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\thankyou.wav
+C:\Dispenser\Dispenser\bin\x86\Debug\Dispenser.exe
+C:\Dispenser\Dispenser\bin\x86\Debug\Dispenser.pdb
+C:\Dispenser\Dispenser\bin\x86\Debug\DispenserControl.dll
+C:\Dispenser\Dispenser\bin\x86\Debug\NetSDKCS.dll
+C:\Dispenser\Dispenser\bin\x86\Debug\DispenserControl.pdb
+C:\Dispenser\Dispenser\bin\x86\Debug\NetSDKCS.pdb
+C:\Dispenser\Dispenser\bin\x86\Debug\NetSDKCS.xml
+C:\Dispenser\Dispenser\bin\x86\Debug\Interop.AXVLC.dll
+C:\Dispenser\Dispenser\bin\x86\Debug\AxInterop.AXVLC.dll
+C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.csprojResolveAssemblyReference.cache
+C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.Form1.resources
+C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.Properties.Resources.resources
+C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.csproj.GenerateResource.Cache
+C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.exe
+C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.pdb

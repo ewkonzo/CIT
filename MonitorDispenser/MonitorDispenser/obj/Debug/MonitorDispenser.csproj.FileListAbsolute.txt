@@ -1,0 +1,10 @@
+c:\MonitorDispenser\MonitorDispenser\bin\Debug\Images\dark-icon.png
+c:\MonitorDispenser\MonitorDispenser\bin\Debug\Images\triangle-icon.png
+c:\MonitorDispenser\MonitorDispenser\bin\Debug\MonitorDispenser.exe
+c:\MonitorDispenser\MonitorDispenser\bin\Debug\MonitorDispenser.pdb
+c:\MonitorDispenser\MonitorDispenser\obj\Debug\MonitorDispenser.csprojResolveAssemblyReference.cache
+c:\MonitorDispenser\MonitorDispenser\obj\Debug\MonitorDispenser.Form1.resources
+c:\MonitorDispenser\MonitorDispenser\obj\Debug\MonitorDispenser.Properties.Resources.resources
+c:\MonitorDispenser\MonitorDispenser\obj\Debug\MonitorDispenser.csproj.GenerateResource.Cache
+c:\MonitorDispenser\MonitorDispenser\obj\Debug\MonitorDispenser.exe
+c:\MonitorDispenser\MonitorDispenser\obj\Debug\MonitorDispenser.pdb

@@ -1,0 +1,18 @@
+C:\Users\Golf\documents\visual studio 2012\Projects\DispenserMonitor\DispenserControl\bin\Debug\DispenserControl.dll
+C:\Users\Golf\documents\visual studio 2012\Projects\DispenserMonitor\DispenserControl\bin\Debug\DispenserControl.pdb
+C:\Users\Golf\documents\visual studio 2012\Projects\DispenserMonitor\DispenserControl\obj\Debug\DispenserControl.dll
+C:\Users\Golf\documents\visual studio 2012\Projects\DispenserMonitor\DispenserControl\obj\Debug\DispenserControl.pdb
+C:\Users\DEV\Documents\Visual Studio 2012\Projects\DispenserMonitor\DispenserControl\bin\Debug\DispenserControl.dll
+C:\Users\DEV\Documents\Visual Studio 2012\Projects\DispenserMonitor\DispenserControl\bin\Debug\DispenserControl.pdb
+C:\Users\DEV\Documents\Visual Studio 2012\Projects\DispenserMonitor\DispenserControl\obj\Debug\DispenserControl.csprojResolveAssemblyReference.cache
+C:\Users\DEV\Documents\Visual Studio 2012\Projects\DispenserMonitor\DispenserControl\obj\Debug\DispenserControl.dll
+C:\Users\DEV\Documents\Visual Studio 2012\Projects\DispenserMonitor\DispenserControl\obj\Debug\DispenserControl.pdb
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\DispenserControl\bin\Debug\DispenserControl.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\DispenserControl\bin\Debug\DispenserControl.pdb
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\DispenserControl\obj\Debug\DispenserControl.dll
+C:\Users\DEV\documents\visual studio 2012\Projects\Dispenser\DispenserControl\obj\Debug\DispenserControl.pdb
+C:\Dispenser\DispenserControl\bin\Debug\DispenserControl.dll
+C:\Dispenser\DispenserControl\bin\Debug\DispenserControl.pdb
+C:\Dispenser\DispenserControl\obj\Debug\DispenserControl.csprojResolveAssemblyReference.cache
+C:\Dispenser\DispenserControl\obj\Debug\DispenserControl.dll
+C:\Dispenser\DispenserControl\obj\Debug\DispenserControl.pdb

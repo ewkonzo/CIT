@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DispenserControl>
+  <ServerDir>C:\Users\DEV\Desktop\Server</ServerDir>
+  <BackupDir>C:\Users\DEV\Desktop\Backup</BackupDir>
+  <Database>127.0.0.1</Database>
+  <ControlPort>COM1</ControlPort>
+  <LedPort>COM11</LedPort>
+  <ReaderPort>COM6</ReaderPort>
+  <CamIp1>192.168.100.234</CamIp1>
+  <CamIp2>192.168.100.234</CamIp2>
+  <CaptureMode>Fore</CaptureMode>
+  <SendData>192.168.1.12</SendData>
+</DispenserControl>

@@ -1,0 +1,11 @@
+C:\Users\Golf\Desktop\NetSDK_Eng_Bin\Demo\Multi-programming language called\C# DEMO\Code\NetSDKCS\obj\x86\Debug\NetSDKCS.csprojResolveAssemblyReference.cache
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\DispenserCIT - Copy\NetSDKCS\obj\x86\Debug\NetSDKCS.dll
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\DispenserCIT - Copy\NetSDKCS\obj\x86\Debug\NetSDKCS.pdb
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\bin\dhnetsdk.dll
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\bin\dhnetsdk.h
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\bin\dhnetsdk.lib
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\bin\NetSDKCS.dll
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\bin\NetSDKCS.pdb
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\MemberManage\NetSDKCS\obj\x86\Debug\NetSDKCS.dll
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\MemberManage\NetSDKCS\obj\x86\Debug\NetSDKCS.pdb
+C:\Users\Golf\Documents\Visual Studio 2010\Projects\MemberManage\NetSDKCS\obj\x86\Debug\NetSDKCS.csprojResolveAssemblyReference.cache
