@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtSendData = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.cmbReaderPort = new System.Windows.Forms.ComboBox();
             this.cmbLEDPort = new System.Windows.Forms.ComboBox();
@@ -70,10 +71,7 @@
             this.txtCam2 = new System.Windows.Forms.TextBox();
             this.txtCam1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.txtSendData = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmpty)).BeginInit();
@@ -111,6 +109,22 @@
             this.groupBox4.Size = new System.Drawing.Size(279, 380);
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
+            // 
+            // txtSendData
+            // 
+            this.txtSendData.Location = new System.Drawing.Point(143, 100);
+            this.txtSendData.Name = "txtSendData";
+            this.txtSendData.Size = new System.Drawing.Size(126, 20);
+            this.txtSendData.TabIndex = 18;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(34, 103);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(102, 13);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "SEND STATUS IP :";
             // 
             // btnEdit
             // 
@@ -488,31 +502,11 @@
             this.label8.TabIndex = 22;
             this.label8.Text = "IP CAMERA1";
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // txtSendData
-            // 
-            this.txtSendData.Location = new System.Drawing.Point(143, 100);
-            this.txtSendData.Name = "txtSendData";
-            this.txtSendData.Size = new System.Drawing.Size(126, 20);
-            this.txtSendData.TabIndex = 18;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(34, 103);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(102, 13);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "SEND STATUS IP :";
             // 
             // Form1
             // 
@@ -522,6 +516,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DispenserControl";
@@ -586,7 +581,6 @@
         private System.Windows.Forms.PictureBox picRed;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox picLoop;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnEdit;

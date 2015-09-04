@@ -1,0 +1,7 @@
+C:\CIT\testClient\testClient\bin\Debug\testClient.exe
+C:\CIT\testClient\testClient\bin\Debug\testClient.pdb
+C:\CIT\testClient\testClient\obj\Debug\testClient.Form1.resources
+C:\CIT\testClient\testClient\obj\Debug\testClient.Properties.Resources.resources
+C:\CIT\testClient\testClient\obj\Debug\testClient.csproj.GenerateResource.Cache
+C:\CIT\testClient\testClient\obj\Debug\testClient.exe
+C:\CIT\testClient\testClient\obj\Debug\testClient.pdb

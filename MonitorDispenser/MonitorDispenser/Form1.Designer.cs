@@ -44,7 +44,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.picLoop = new System.Windows.Forms.PictureBox();
             this.lbLocal = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.mynotifyicon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +74,7 @@
             this.groupBox3.Controls.Add(this.picLoop);
             this.groupBox3.Location = new System.Drawing.Point(10, 39);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(279, 175);
+            this.groupBox3.Size = new System.Drawing.Size(292, 175);
             this.groupBox3.TabIndex = 32;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "STATUS";
@@ -198,21 +197,17 @@
             // 
             this.lbLocal.AutoSize = true;
             this.lbLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.lbLocal.Location = new System.Drawing.Point(24, 13);
+            this.lbLocal.Location = new System.Drawing.Point(7, 9);
             this.lbLocal.Name = "lbLocal";
             this.lbLocal.Size = new System.Drawing.Size(137, 13);
             this.lbLocal.TabIndex = 33;
             this.lbLocal.Text = "RECEIVE STATUS IP :";
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // mynotifyicon
             // 
             this.mynotifyicon.ContextMenuStrip = this.contextMenuStrip1;
             this.mynotifyicon.Icon = ((System.Drawing.Icon)(resources.GetObject("mynotifyicon.Icon")));
-            this.mynotifyicon.Text = "notifyIcon1";
+            this.mynotifyicon.Text = "DispenserCard";
             this.mynotifyicon.Visible = true;
             // 
             // contextMenuStrip1
@@ -221,19 +216,19 @@
             this.showToolStripMenuItem,
             this.hideToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(104, 48);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.showToolStripMenuItem.Text = "&Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // hideToolStripMenuItem
             // 
             this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
-            this.hideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hideToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.hideToolStripMenuItem.Text = "&Hide";
             this.hideToolStripMenuItem.Click += new System.EventHandler(this.hideToolStripMenuItem_Click);
             // 
@@ -241,10 +236,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 229);
+            this.ClientSize = new System.Drawing.Size(314, 229);
             this.Controls.Add(this.lbLocal);
             this.Controls.Add(this.groupBox3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Monitor";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
@@ -278,7 +275,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox picLoop;
         private System.Windows.Forms.Label lbLocal;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.NotifyIcon mynotifyicon;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;

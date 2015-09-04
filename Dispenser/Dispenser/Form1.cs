@@ -27,6 +27,9 @@ namespace Dispenser
         Bitmap bmpPL = null;
         Bitmap bmpPD = null;
         DahuaSDK dahua = new DahuaSDK();
+        ClientDispenser client = new ClientDispenser();
+        private delegate void SetTextCallback(string text);
+
         string tmpFileD, tmpFileL;
         string strFileL, strFileD;
         static int CardLevel, RecordNo;
@@ -38,6 +41,7 @@ namespace Dispenser
         bool writeBlock = false;
         bool connectBoard = false;
         int readError = 0;
+        System.Timers.Timer tmReader;
 
         public Form1()
         {
@@ -46,6 +50,7 @@ namespace Dispenser
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            tmReader = new System.Timers.Timer();
             loadConfig();
             toggleControlDisplay();
             if (!db.Connect(txtDatabaseIP.Text))
@@ -112,7 +117,10 @@ namespace Dispenser
                         Thread.Sleep(700);
                         if (connectBoard)
                         {
-                            timer1.Enabled = true;
+                            tmReader.Enabled = true;
+                            tmReader.Interval = 100;
+                            tmReader.Elapsed +=tmReader_Elapsed;
+                            tmReader.Start();
                         }
                         else
                         {
@@ -127,6 +135,96 @@ namespace Dispenser
             }
 
             
+
+        }
+
+        private void tmReader_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (!writeBlock)
+            {
+                if (mifaV.chkCard())
+                {
+                    string strNum = mifaV.Init1();
+                    if (strNum != "")
+                    {
+                        intIDV = Convert.ToUInt32(strNum, 16);
+                        mifaV.Init2();
+
+                        if (mifaV.Login(4))
+                        {
+                            if (mifaV.WriteBlock(5, "V000000000000000"))
+                            {
+                                if (checkCard(intIDV))
+                                {
+                                    readError = 0;
+                                    dispenserControl.portHandle.Write("R\r");//Ready for Green Button
+                                    Console.WriteLine("ID CARD :" + intIDV.ToString());
+                                    SetText1("ReadOK " + intIDV.ToString());
+                                    writeBlock = true;
+                                    Thread.Sleep(1000);
+                                    tmReader.Enabled = false;
+                                }
+                                else
+                                {
+                                    SetText1("ReadOK ");
+                                    //    db.SaveData("INSERT INTO cardmf (name,level) VALUES("+intIDV.ToString()+",1)");
+                                    readError = 0;
+                                    dispenserControl.callBack();
+                                    Thread.Sleep(3000);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            readError++;
+                            if (readError > 20)
+                            {
+                                SetText1( "ReadOK ");
+                                readError = 0;
+                                dispenserControl.callBack();
+                                Thread.Sleep(3000);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        readError++;
+                        if (readError > 20)
+                        {
+                            SetText1("ReadOK ");
+                            readError = 0;
+                            dispenserControl.callBack();
+                            Thread.Sleep(3000);
+                        }
+                    }
+                }
+                else
+                {
+                    readError++;
+                    if (readError > 20)
+                    {
+                        SetText1( "ReadOK ");
+                        readError = 0;
+                        dispenserControl.callBack();
+                        Thread.Sleep(3000);
+                    }
+                }
+            }
+        }
+
+        private void SetText1(string text)
+        {
+            if (this.label13.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText1);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                //this.lbACD1.Text += text + "\r\n";
+                label13.Text = text;
+            }
 
         }
 
@@ -276,7 +374,9 @@ namespace Dispenser
                 //   SetText7("บัตรพร้อมหยิบ");
             }
             Console.WriteLine(dataString);
-            Client.StartClient(dataString, txtSendData.Text);
+            if (client.Connect2Server(txtSendData.Text, 8100)) {
+                client.Send2Server(dataString);
+            }
 
             if (dataString[5] == '0' && ready)
             {
@@ -284,6 +384,7 @@ namespace Dispenser
                 //Save Data
                 if (CarInRecord(intIDV.ToString(), "0", "NO", "", strFileD, strFileL))
                 {
+                    tmReader.Enabled = false;
                     string sql = "UPDATE card" + typeCard + " SET no =" + RecordNo2.ToString();
                     sql += " WHERE name=" + intIDV.ToString();
                     db.SaveData(sql);
@@ -296,6 +397,7 @@ namespace Dispenser
                     Thread.Sleep(3000);
                     writeBlock = false;
                     if (ledDisplay.sendData) ledDisplay.setText("Creative Innovation Technology", 3);
+                    tmReader.Enabled = true;
                 }
                 //  label13.Text = "ReadOK ";
             }
@@ -348,76 +450,76 @@ namespace Dispenser
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (!writeBlock)
-            {
-                if (mifaV.chkCard())
-                {
-                    string strNum = mifaV.Init1();
-                    if (strNum != "")
-                    {
-                        intIDV = Convert.ToUInt32(strNum, 16);
-                        mifaV.Init2();
+            //if (!writeBlock)
+            //{
+            //    if (mifaV.chkCard())
+            //    {
+            //        string strNum = mifaV.Init1();
+            //        if (strNum != "")
+            //        {
+            //            intIDV = Convert.ToUInt32(strNum, 16);
+            //            mifaV.Init2();
 
-                        if (mifaV.Login(4))
-                        {
-                            if (mifaV.WriteBlock(5, "V000000000000000"))
-                            {
-                                if (checkCard(intIDV))
-                                {
-                                    readError = 0;
-                                    dispenserControl.portHandle.Write("R\r");//Ready for Green Button
-                                    Console.WriteLine("ID CARD :" + intIDV.ToString());
-                                    label13.Text = "ReadOK " + intIDV.ToString();
-                                    writeBlock = true;
-                                    Thread.Sleep(1000);
-                                }
-                                else
-                                {
-                                    label13.Text = "ReadOK ";
-                                    //    db.SaveData("INSERT INTO cardmf (name,level) VALUES("+intIDV.ToString()+",1)");
-                                    readError = 0;
-                                    dispenserControl.callBack();
-                                    Thread.Sleep(3000);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            readError++;
-                            if (readError > 8)
-                            {
-                                label13.Text = "ReadOK ";
-                                readError = 0;
-                                dispenserControl.callBack();
-                                Thread.Sleep(3000);
-                            }
-                        }
+            //            if (mifaV.Login(4))
+            //            {
+            //                if (mifaV.WriteBlock(5, "V000000000000000"))
+            //                {
+            //                    if (checkCard(intIDV))
+            //                    {
+            //                        readError = 0;
+            //                        dispenserControl.portHandle.Write("R\r");//Ready for Green Button
+            //                        Console.WriteLine("ID CARD :" + intIDV.ToString());
+            //                        label13.Text = "ReadOK " + intIDV.ToString();
+            //                        writeBlock = true;
+            //                        Thread.Sleep(1000);
+            //                    }
+            //                    else
+            //                    {
+            //                        label13.Text = "ReadOK ";
+            //                        //    db.SaveData("INSERT INTO cardmf (name,level) VALUES("+intIDV.ToString()+",1)");
+            //                        readError = 0;
+            //                        dispenserControl.callBack();
+            //                        Thread.Sleep(3000);
+            //                    }
+            //                }
+            //            }
+            //            else
+            //            {
+            //                readError++;
+            //                if (readError > 8)
+            //                {
+            //                    label13.Text = "ReadOK ";
+            //                    readError = 0;
+            //                    dispenserControl.callBack();
+            //                    Thread.Sleep(3000);
+            //                }
+            //            }
 
-                    }
-                    else
-                    {
-                        readError++;
-                        if (readError > 8)
-                        {
-                            label13.Text = "ReadOK ";
-                            readError = 0;
-                            dispenserControl.callBack();
-                            Thread.Sleep(3000);
-                        }
-                    }
-                }
-                else
-                {
-                    readError++;
-                    if (readError > 8)
-                    {
-                        label13.Text = "ReadOK ";
-                        readError = 0;
-                        dispenserControl.callBack();
-                        Thread.Sleep(3000);
-                    }
-                }
-            }
+            //        }
+            //        else
+            //        {
+            //            readError++;
+            //            if (readError > 8)
+            //            {
+            //                label13.Text = "ReadOK ";
+            //                readError = 0;
+            //                dispenserControl.callBack();
+            //                Thread.Sleep(3000);
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        readError++;
+            //        if (readError > 8)
+            //        {
+            //            label13.Text = "ReadOK ";
+            //            readError = 0;
+            //            dispenserControl.callBack();
+            //            Thread.Sleep(3000);
+            //        }
+            //    }
+            //}
         }
 
         private void takePhotoFore()
@@ -784,7 +886,7 @@ namespace Dispenser
                 Application.Exit();
             }
             else {
-                timer1.Enabled = false;
+                tmReader.Enabled = false;
             }
         }
 

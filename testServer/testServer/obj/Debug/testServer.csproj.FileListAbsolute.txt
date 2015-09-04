@@ -1,0 +1,8 @@
+C:\CIT\testServer\testServer\bin\Debug\testServer.exe
+C:\CIT\testServer\testServer\bin\Debug\testServer.pdb
+C:\CIT\testServer\testServer\obj\Debug\testServer.csprojResolveAssemblyReference.cache
+C:\CIT\testServer\testServer\obj\Debug\testServer.Form1.resources
+C:\CIT\testServer\testServer\obj\Debug\testServer.Properties.Resources.resources
+C:\CIT\testServer\testServer\obj\Debug\testServer.csproj.GenerateResource.Cache
+C:\CIT\testServer\testServer\obj\Debug\testServer.exe
+C:\CIT\testServer\testServer\obj\Debug\testServer.pdb
