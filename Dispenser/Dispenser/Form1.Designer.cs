@@ -72,6 +72,8 @@
             this.txtCam1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.cmbReaderMember = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmpty)).BeginInit();
@@ -89,6 +91,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cmbReaderMember);
+            this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.txtSendData);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.btnEdit);
@@ -508,6 +512,23 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // cmbReaderMember
+            // 
+            this.cmbReaderMember.FormattingEnabled = true;
+            this.cmbReaderMember.Location = new System.Drawing.Point(142, 206);
+            this.cmbReaderMember.Name = "cmbReaderMember";
+            this.cmbReaderMember.Size = new System.Drawing.Size(121, 21);
+            this.cmbReaderMember.TabIndex = 20;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(25, 209);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(112, 13);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "RD MEMBER PORT :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,6 +607,8 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox txtSendData;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cmbReaderMember;
+        private System.Windows.Forms.Label label17;
 
     }
 }

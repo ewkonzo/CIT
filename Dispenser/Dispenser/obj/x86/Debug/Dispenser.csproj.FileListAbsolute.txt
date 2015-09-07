@@ -58,3 +58,7 @@ C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.Properties.Resources.resources
 C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.csproj.GenerateResource.Cache
 C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.exe
 C:\Dispenser\Dispenser\obj\x86\Debug\Dispenser.pdb
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\hello2.wav
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\pressGreen2.wav
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\pressRed2.wav
+C:\Dispenser\Dispenser\bin\x86\Debug\Sounds\thankyou2.wav

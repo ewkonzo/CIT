@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DispenserControllor.cs" />
+    <Compile Include="FRMReader.cs" />
     <Compile Include="LEDDisplay.cs" />
     <Compile Include="MifareReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

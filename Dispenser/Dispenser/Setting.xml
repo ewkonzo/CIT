@@ -6,8 +6,9 @@
   <ControlPort>COM1</ControlPort>
   <LedPort>COM11</LedPort>
   <ReaderPort>COM6</ReaderPort>
+  <ReaderMember>COM4</ReaderMember>
   <CamIp1>192.168.100.234</CamIp1>
   <CamIp2>192.168.100.234</CamIp2>
   <CaptureMode>Fore</CaptureMode>
-  <SendData>192.168.1.12</SendData>
+  <SendData>127.0.0.1</SendData>
 </DispenserControl>

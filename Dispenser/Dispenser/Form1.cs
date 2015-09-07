@@ -21,9 +21,10 @@ namespace Dispenser
     {
         SoundPlayer player = new SoundPlayer();
         MifareReader mifaV;
+        FRMReader mifaMember;
         DispenserControllor dispenserControl;
         LEDDisplay ledDisplay;
-        Image []active, deactive;
+        Image[] active, deactive;
         Bitmap bmpPL = null;
         Bitmap bmpPD = null;
         DahuaSDK dahua = new DahuaSDK();
@@ -32,8 +33,8 @@ namespace Dispenser
 
         string tmpFileD, tmpFileL;
         string strFileL, strFileD;
-        static int CardLevel, RecordNo;
-        string typeCard;
+        static int CardLevel, RecordNo, CardLevelM, RecordNoM;
+        string typeCard, typeCardM;
         uint intIDV = 0;
         bool ready = false;
         bool loopSpeaking = false;
@@ -42,6 +43,7 @@ namespace Dispenser
         bool connectBoard = false;
         int readError = 0;
         System.Timers.Timer tmReader;
+        System.Timers.Timer tmReaderMember;
 
         public Form1()
         {
@@ -51,6 +53,7 @@ namespace Dispenser
         private void Form1_Load(object sender, EventArgs e)
         {
             tmReader = new System.Timers.Timer();
+            tmReaderMember = new System.Timers.Timer();
             loadConfig();
             toggleControlDisplay();
             if (!db.Connect(txtDatabaseIP.Text))
@@ -64,11 +67,12 @@ namespace Dispenser
             progressBar1.Visible = true;
             active = new Image[6];
             deactive = new Image[6];
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 6; i++)
+            {
                 active[i] = Image.FromFile("Images/triangle-icon.png");
                 deactive[i] = Image.FromFile("Images/dark-icon.png");
             }
-           
+
 
             axVLCPlugin1.stop();
             axVLCPlugin1.playlistClear();
@@ -95,6 +99,7 @@ namespace Dispenser
                 cmbControlPort.Items.Add(s);
                 cmbLEDPort.Items.Add(s);
                 cmbReaderPort.Items.Add(s);
+                cmbReaderMember.Items.Add(s);
             }
 
             ledDisplay = new LEDDisplay(cmbLEDPort.Text);
@@ -105,6 +110,24 @@ namespace Dispenser
             else MessageBox.Show("Cannot connect to LED display.");
 
             mifaV = new MifareReader(false);
+            mifaMember = new FRMReader();
+
+            if (mifaMember.Open(cmbReaderMember.Text))
+            {
+                if (mifaMember.Connect())
+                {
+                    mifaMember.setLED(1);
+                    tmReaderMember.Enabled = true;
+                    tmReaderMember.Interval = 100;
+                    tmReaderMember.Elapsed += tmReaderMember_Elapsed;
+                    tmReaderMember.Start();
+                }
+                else
+                {
+                    MessageBox.Show("Cannot connect to Member Reader.");
+                }
+            }
+
             if (mifaV.Open(cmbReaderPort.Text))
             {
                 if (mifaV.Connect())
@@ -119,7 +142,7 @@ namespace Dispenser
                         {
                             tmReader.Enabled = true;
                             tmReader.Interval = 100;
-                            tmReader.Elapsed +=tmReader_Elapsed;
+                            tmReader.Elapsed += tmReader_Elapsed;
                             tmReader.Start();
                         }
                         else
@@ -134,8 +157,62 @@ namespace Dispenser
                 }
             }
 
-            
 
+
+        }
+        bool loopDetect = false;
+        private void tmReaderMember_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (mifaMember.chkCard())
+            {
+                tmReaderMember.Enabled = false;
+
+                mifaMember.setLED(0);
+                mifaMember.setSound(1);
+                Thread.Sleep(200);
+                mifaMember.setLED(1);
+                mifaMember.setSound(1);
+
+                string strId = mifaMember.Init1();
+                if (strId != "" && loopDetect)
+                {
+                    uint intID = Convert.ToUInt32(strId, 16);
+                    if (checkCardM(intID))
+                    {
+                        if (CardLevelM > 1)
+                        {
+
+                            DataTable dt = db.LoadData("select cartype, license from member where cardid = " + intID.ToString());
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+
+                                if (rdBack.Checked)
+                                    takePhotoBack(false);
+                                if (rdFore.Checked)
+                                    takePhotoFore(false);
+
+                                if (CarInRecordMember(intID.ToString(), dt.Rows[0].ItemArray[0].ToString()
+                                    , dt.Rows[0].ItemArray[1].ToString(), "", strFileD, strFileL, ""))
+                                {
+
+                                    string sql = "UPDATE card" + typeCardM + " SET no =" + RecordNo2.ToString();
+                                    sql += " WHERE name=" + intID.ToString();
+                                    db.SaveData(sql);
+                                    CarInRecordBMember(intID.ToString(), dt.Rows[0].ItemArray[0].ToString()
+                                    , dt.Rows[0].ItemArray[1].ToString(), "", strFileD, strFileL, txtBackupDir.Text, "");
+                                    playSound(1);
+                                    if (ledDisplay.sendData) ledDisplay.setText("Welcome", 3);
+                                    dispenserControl.liftOut();
+                                }
+                            }
+                            if (ledDisplay.sendData) ledDisplay.setText("Creative Innovation Technology", 3);
+                            Thread.Sleep(2000);
+                        }
+                    }
+                }
+
+                tmReaderMember.Enabled = true;
+            }
         }
 
         private void tmReader_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -179,7 +256,7 @@ namespace Dispenser
                             readError++;
                             if (readError > 20)
                             {
-                                SetText1( "ReadOK ");
+                                SetText1("ReadOK ");
                                 readError = 0;
                                 dispenserControl.callBack();
                                 Thread.Sleep(3000);
@@ -204,13 +281,16 @@ namespace Dispenser
                     readError++;
                     if (readError > 20)
                     {
-                        SetText1( "ReadOK ");
+                        SetText1("ReadOK ");
                         readError = 0;
                         dispenserControl.callBack();
                         Thread.Sleep(3000);
                     }
                 }
             }
+
+
+
         }
 
         private void SetText1(string text)
@@ -264,6 +344,11 @@ namespace Dispenser
                     cmbReaderPort.Text = reader.ReadElementString();
                 }
 
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "ReaderMember")
+                {
+                    cmbReaderMember.Text = reader.ReadElementString();
+                }
+
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "CamIp1")
                 {
                     txtCam1.Text = reader.ReadElementString();
@@ -283,7 +368,7 @@ namespace Dispenser
                         rdBack.Checked = true;
                 }
 
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "SendData") 
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "SendData")
                 {
                     txtSendData.Text = reader.ReadElementString();
                 }
@@ -314,6 +399,9 @@ namespace Dispenser
             xmlWriter.WriteStartElement("ReaderPort");
             xmlWriter.WriteString(cmbReaderPort.Text);
             xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("ReaderMember");
+            xmlWriter.WriteString(cmbReaderMember.Text);
+            xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("CamIp1");
             xmlWriter.WriteString(txtCam1.Text);
             xmlWriter.WriteEndElement();
@@ -342,11 +430,39 @@ namespace Dispenser
                 connectBoard = true;
             }
 
-            if (dataString[2] == '1') picLoop.Image = active[0];//Loop
-            else picLoop.Image = deactive[0];
-
-            if (dataString[3] == '1') picRed.Image = active[1];//Red Btn
-            else picRed.Image = deactive[1];
+            if (dataString[2] == '1')
+            {
+                picLoop.Image = active[0];//Loop
+                loopDetect = true;
+            }
+            else
+            {
+                picLoop.Image = deactive[0];
+                loopDetect = false;
+                if (ready)
+                {
+                    ready = false;
+                    if (writeBlock) writeBlock = false;
+                    readError = 0;
+                    dispenserControl.callBack();
+                    Thread.Sleep(3000);
+                    tmReader.Enabled = true;
+                }
+            }
+            if (dataString[3] == '1')//Red Btn
+            {
+                playSound(3);
+                if (rdBack.Checked)
+                    takePhotoBack(true);
+                if (rdFore.Checked)
+                    takePhotoFore(true);
+                if (ledDisplay.sendData) ledDisplay.setText("Pls.wait officers were coming in", 3);
+                picRed.Image = active[1];
+            }
+            else
+            {
+                picRed.Image = deactive[1];
+            }
 
             if (dataString[4] == '1') picGreen.Image = active[2];//Green Btn
             else picGreen.Image = deactive[2];
@@ -363,18 +479,19 @@ namespace Dispenser
             if (dataString[1] == '1')
             {//Ready State
 
-                playSound(4);
+             //   playSound(4);
                 if (rdBack.Checked)
-                    takePhotoBack();
+                    takePhotoBack(false);
                 if (rdFore.Checked)
-                    takePhotoFore();
-               if(ledDisplay.sendData) ledDisplay.setText("PullCard", 3);
+                    takePhotoFore(false);
+                if (ledDisplay.sendData) ledDisplay.setText("PullCard", 3);
                 ready = true;
                 Thread.Sleep(1000);
                 //   SetText7("บัตรพร้อมหยิบ");
             }
             Console.WriteLine(dataString);
-            if (client.Connect2Server(txtSendData.Text, 8100)) {
+            if (client.Connect2Server(txtSendData.Text, 8100))
+            {
                 client.Send2Server(dataString);
             }
 
@@ -390,7 +507,7 @@ namespace Dispenser
                     db.SaveData(sql);
                     CarInRecordB(intIDV.ToString(), "0", "NO", "", strFileD, strFileL, txtBackupDir.Text);
                     ready = false;
-                    if (ledDisplay.sendData) ledDisplay.setText("Welcome :)", 3);
+                    if (ledDisplay.sendData) ledDisplay.setText("Welcome", 3);
                     playSound(1);
                     dispenserControl.liftOut();
                     dispenserControl.portHandle.Write("W\r");
@@ -522,7 +639,7 @@ namespace Dispenser
             //}
         }
 
-        private void takePhotoFore()
+        private void takePhotoFore(bool help)
         {
             try
             {
@@ -553,15 +670,19 @@ namespace Dispenser
             catch (Exception e)
             {
             }
-            SaveImage(bmpPD, bmpPL, txtServerDir.Text, "VI");
-            SaveImage(bmpPD, bmpPL, txtBackupDir.Text, "VI");
+            string str = "VI";
+            if (help) str = "Help";
+            SaveImage(bmpPD, bmpPL, txtServerDir.Text, str);
+            SaveImage(bmpPD, bmpPL, txtBackupDir.Text, str);
         }
 
-        private void takePhotoBack()
+        private void takePhotoBack(bool help)
         {
-            SaveImageDahua(ref bmpPD, ref bmpPL, txtServerDir.Text, "VI");
+            string str = "VI";
+            if (help) str = "Help";
+            SaveImageDahua(ref bmpPD, ref bmpPL, txtServerDir.Text, str);
             Thread.Sleep(1500);
-            SaveImageDahua(ref bmpPD, ref bmpPL, txtBackupDir.Text, "VI");
+            SaveImageDahua(ref bmpPD, ref bmpPL, txtBackupDir.Text, str);
             picCam1.Image = bmpPL;
             picCam2.Image = bmpPD;
         }
@@ -824,6 +945,47 @@ namespace Dispenser
             return result;
         }
 
+        private bool checkCardM(uint cardid)
+        {
+            bool result = false;
+            try
+            {
+
+                string sql = "";
+                //Check Card Prox
+                sql = "SELECT * FROM cardpx ";
+                sql += " WHERE name=" + cardid;
+                DataTable dt = db.LoadData(sql);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    typeCardM = "px";
+                    CardLevelM = Convert.ToInt32(dt.Rows[0].ItemArray[1]);
+                    RecordNoM = Convert.ToInt32(dt.Rows[0].ItemArray[2]);
+                    if (CardLevelM > 0 && RecordNoM == 0)
+                        result = true;
+                }
+                else
+                {
+                    sql = "SELECT * FROM cardmf ";
+                    sql += " WHERE name=" + cardid;
+                    dt = db.LoadData(sql);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        typeCardM = "mf";
+                        CardLevelM = Convert.ToInt32(dt.Rows[0].ItemArray[1]);
+                        RecordNoM = Convert.ToInt32(dt.Rows[0].ItemArray[2]);
+                        if (CardLevelM > 0 && RecordNoM == 0)
+                            result = true;
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+            }
+            return result;
+        }
+
         private void SaveImage(Bitmap bmpPD, Bitmap bmpPL, string strDir, string strMode)
         {
             try
@@ -885,7 +1047,8 @@ namespace Dispenser
                 MessageBox.Show("Saved! restart to Load Config");
                 Application.Exit();
             }
-            else {
+            else
+            {
                 tmReader.Enabled = false;
             }
         }
@@ -913,6 +1076,7 @@ namespace Dispenser
             cmbControlPort.Enabled = toggleDisplay;
             cmbLEDPort.Enabled = toggleDisplay;
             cmbReaderPort.Enabled = toggleDisplay;
+            cmbReaderMember.Enabled = toggleDisplay;
             txtSendData.Enabled = toggleDisplay;
 
         }

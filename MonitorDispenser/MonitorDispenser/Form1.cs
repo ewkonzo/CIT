@@ -47,7 +47,7 @@ namespace MonitorDispenser
 
             if (OpenServer(8100))
             {
-                lbLocal.Text = "RECEIVE STATUS IP : " + GetLocalIPAddress() ;
+                lbLocal.Text = "RECEIVE STATUS IP : " + GetLocalIPAddress();
                 OnDataReceivedFinish += Form1_OnDataReceivedFinish;
             }
 
@@ -75,8 +75,26 @@ namespace MonitorDispenser
                 if (dataTemp[2] == '1') picLoop.Image = active[0];
                 else picLoop.Image = deactive[0];
 
-                if (dataTemp[3] == '1') picRed.Image = active[1];
-                else picRed.Image = deactive[1];
+                if (dataTemp[3] == '1')
+                {
+                    picRed.Image = active[1];
+                    this.Invoke(new Action(() =>
+                    {
+                        MessageBox.Show(new Form() { TopMost = true }, "มีการกดปุ่มขอความช่วยเหลือ!!!!!!",
+                            "คำเตือน!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1);
+                    }));
+                    picLow.Image = active[4];
+                    mynotifyicon.BalloonTipText = "Help Button...";
+                    mynotifyicon.BalloonTipTitle = "Monitor Dispenser";
+                    mynotifyicon.Visible = true;
+                    mynotifyicon.ShowBalloonTip(500);
+
+                }
+                else
+                    picRed.Image = deactive[1];
 
                 if (dataTemp[4] == '1') picGreen.Image = active[2];
                 else picGreen.Image = deactive[2];
